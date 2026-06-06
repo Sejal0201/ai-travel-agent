@@ -4,10 +4,19 @@ from main import app as travel_app
 
 api = FastAPI()
 
+
+@api.get("/")
+def home():
+    return {
+        "message": "AI Travel Planner API is running 🚀"
+    }
+
+
 class TravelRequest(BaseModel):
     destination: str
     budget: int
     days: int
+
 
 @api.post("/plan")
 def generate_plan(req: TravelRequest):
